@@ -174,7 +174,7 @@ void HAL_MspInit(void)
 
 #if (BOOT_COM_RS232_ENABLE > 0)
   /* Peripheral clock enable. */
-  __HAL_RCC_USART2_CLK_ENABLE();
+  __HAL_RCC_USART1_CLK_ENABLE();
 #endif /* BOOT_COM_RS232_ENABLE > 0 */
 #if (BOOT_COM_CAN_ENABLE > 0)
   /* Peripheral clock enable. */
@@ -199,20 +199,20 @@ void HAL_MspInit(void)
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 
   /* Configure the LED GPIO pin. */
-  GPIO_InitStruct.Pin = GPIO_PIN_5;
+  GPIO_InitStruct.Pin = GPIO_PIN_2;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, GPIO_PIN_RESET);
 
 #if (BOOT_COM_RS232_ENABLE > 0)
   /* UART TX and RX GPIO pin configuration. */
-  GPIO_InitStruct.Pin = GPIO_PIN_2;
+  GPIO_InitStruct.Pin = GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  GPIO_InitStruct.Pin = GPIO_PIN_3;
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -249,11 +249,11 @@ void HAL_MspDeInit(void)
 #endif /* BOOT_COM_CAN_ENABLE > 0 */
 #if (BOOT_COM_RS232_ENABLE > 0)
   /* Reset UART GPIO pin configuration. */
-  HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3);
+  HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
 #endif /* BOOT_COM_RS232_ENABLE > 0 */
   /* Deconfigure GPIO pin for the LED. */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-  HAL_GPIO_DeInit(GPIOA, GPIO_PIN_5);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, GPIO_PIN_RESET);
+  HAL_GPIO_DeInit(GPIOB, GPIO_PIN_2);
 
 #if (BOOT_COM_CAN_ENABLE > 0)
   /* Peripheral clock enable. */
@@ -261,7 +261,7 @@ void HAL_MspDeInit(void)
 #endif /* BOOT_COM_CAN_ENABLE > 0 */
 #if (BOOT_COM_RS232_ENABLE > 0)
   /* Peripheral clock disable. */
-  __HAL_RCC_USART2_CLK_DISABLE();
+  __HAL_RCC_USART1_CLK_DISABLE();
 #endif /* BOOT_COM_RS232_ENABLE > 0 */
 
   /* GPIO ports clock disable. */

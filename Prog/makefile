@@ -42,8 +42,7 @@ PROJ_NAME=demoprog_stm32f103
 #  cmd /c for %A in ("%cd%") do @echo %~sA 
 #TOOL_PATH=/opt/gcc-arm-none-eabi-8-2018-q4-major/bin/
 #TOOL_PATH=C:/PROGRA~2/GNUTOO~1/82018-~1/bin/
-TOOL_PATH=
-
+TOOL_PATH=/opt/gcc-arm-none-eabi-10.3-2021.10/bin/
 
 #|--------------------------------------------------------------------------------------|
 #| Collect project files                                                                |
@@ -101,7 +100,7 @@ CFLAGS     += -D__weak="__attribute__((weak))" -D__packed="__attribute__((__pack
 CFLAGS     += $(INC_PATH)
 AFLAGS      = $(CFLAGS)
 LFLAGS      = $(STDFLAGS) $(OPTFLAGS)
-LFLAGS     += -T"STM32F103RB_FLASH.ld" -Wl,-Map=$(BIN_PATH)/$(PROJ_NAME).map
+LFLAGS     += -T"STM32F103C8TX_FLASH.ld" -Wl,-Map=$(BIN_PATH)/$(PROJ_NAME).map
 LFLAGS     += -Wl,--gc-sections $(LIB_PATH)
 OFLAGS      = -O srec
 ODFLAGS     = -x

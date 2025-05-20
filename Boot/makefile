@@ -23,6 +23,7 @@
 #| should be located in ".\Doc\license.html". If not, contact Feaser to obtain a copy.
 #|
 #****************************************************************************************
+
 SHELL = sh
 
 #|--------------------------------------------------------------------------------------|
@@ -97,6 +98,7 @@ LIB_PATH  =
 #|--------------------------------------------------------------------------------------|
 #| Options for toolchain binaries                                                       |
 #|--------------------------------------------------------------------------------------|
+
 STDFLAGS    = -mcpu=cortex-m3 -mthumb -std=gnu11 -fstack-usage -Wall -specs=nano.specs
 STDFLAGS   += -fdata-sections -ffunction-sections -Wall -g -Wno-strict-aliasing
 OPTFLAGS    = -Os -flto
@@ -178,7 +180,6 @@ clean:
 	@$(RM) $(RMFLAGS) $(BIN_PATH)/$(PROJ_NAME).elf $(BIN_PATH)/$(PROJ_NAME).map
 	@$(RM) $(RMFLAGS) $(BIN_PATH)/$(PROJ_NAME).srec
 	@echo +++ Clean complete
-
 	
 #|--------------------------------------------------------------------------------------|
 #| Dependency generation                                                                |
